@@ -1,4 +1,3 @@
-
 // All
 // https://api.quarantine.country/api/v1/spots/summary
 
@@ -14,7 +13,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
-    int choise;
+    int choice;
     String restOfUrl;
     String date;
     String filePath;
@@ -29,9 +28,9 @@ public class Menu {
         System.out.println("5. Niemcy");
 
         Scanner input = new Scanner(System.in);
-        choise = input.nextInt();
+        choice = input.nextInt();
 
-        switch (choise) {
+        switch (choice) {
             case 1 -> restOfUrl = "summary";
             case 2 -> restOfUrl = "month/?region=poland";
             case 3 -> restOfUrl = "month/?region=us";
@@ -50,9 +49,9 @@ public class Menu {
         System.out.println("1. Wypisz w konsoli");
         System.out.println("2. Zapisz do pliku");
         System.out.println("3. Oba");
-        choise = input.nextInt();
+        choice = input.nextInt();
 
-        switch (choise) {
+        switch (choice) {
             case 1 -> System.out.println(new DayOfCovid(restOfUrl, date));
             case 2 -> {
                 System.out.println("Wpisz sciezke do pliku rekomendowana: result/dayOfCovid.json");
@@ -68,18 +67,5 @@ public class Menu {
             }
             default -> System.out.println("Nie ma takiej opcji");
         }
-
     }
 }
-
-
-
-
-
-//    try {
-//            DayOfCovid cov = new DayOfCovid("month/?region=russia", "2021-04-26");
-//            cov.saveToJSONFile("result/dayOfCovid.json");
-//            }
-//            catch (ExceptionInInitializerError e) {
-//            System.out.println("Brak infomacji");
-//            }
