@@ -49,6 +49,7 @@ public class DayOfCovid {
         tests_ratio = (double) tested / total_cases;
     }
 
+    @SuppressWarnings("unchecked")
     public JSONObject getInJSONObject() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("total_cases", getTotal_cases());
