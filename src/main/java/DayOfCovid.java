@@ -48,6 +48,19 @@ public class DayOfCovid {
         tests_ratio = (double) tested / total_cases;
     }
 
+    @Override
+    public String toString() {
+        return "DayOfCovid{" +
+                "total_cases=" + total_cases +
+                ", deaths=" + deaths +
+                ", recovered=" + recovered +
+                ", tested=" + tested +
+                ", death_ratio=" + death_ratio +
+                ", recovery_ratio=" + recovery_ratio +
+                ", tests_ratio=" + tests_ratio +
+                '}';
+    }
+
     public void setTotal_cases(int total_cases) {
         this.total_cases = total_cases;
         countRatio();

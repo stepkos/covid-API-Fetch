@@ -17,7 +17,7 @@ public class Main {
 
         try {
             DayOfCovid cov = new DayOfCovid("month/?region=russia", "2021-04-26");
-            System.out.println(cov.getRecovery_ratio());
+            System.out.println(cov);
         }
         catch (ExceptionInInitializerError e) {
             System.out.println("Brak infomacji");
