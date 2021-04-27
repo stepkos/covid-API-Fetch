@@ -2,6 +2,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -46,6 +47,30 @@ public class DayOfCovid {
         death_ratio = (double) deaths / total_cases;
         recovery_ratio = (double) recovered / total_cases;
         tests_ratio = (double) tested / total_cases;
+    }
+
+    public JSONObject getInJSONObject() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("total_cases", getTotal_cases());
+        jsonObject.put("deaths", getDeaths());
+        jsonObject.put("recovered", getRecovered());
+        jsonObject.put("tested", getTested());
+        jsonObject.put("death_ratio", getDeath_ratio());
+        jsonObject.put("recovery_ratio", getRecovery_ratio());
+        jsonObject.put("tests_ratio", getTests_ratio());
+
+        return jsonObject;
+    }
+
+    public void saveToJSONFile(String path) {
+        try (FileWriter file = new FileWriter(path)) {
+            file.write(getInJSONObject().toJSONString());
+            file.flush();
+            System.out.println("Files has saved successfull!");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
