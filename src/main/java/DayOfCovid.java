@@ -3,6 +3,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class DayOfCovid {
 
@@ -20,14 +21,17 @@ public class DayOfCovid {
     public double positive_test_ratio;  // wspolczynnik pozytywnych testow
 
 
-    public DayOfCovid(String restOfUrl, String date) throws IOException, ParseException {
+    public DayOfCovid(String restOfUrl, String date) throws IOException, ParseException, ExceptionInInitializerError {
         String jsonStr = FetchHttp.getJsonAsStr(baseUrl.concat(restOfUrl));
 
         JSONObject jsonObj = (JSONObject) new JSONParser().parse(jsonStr);
         System.out.println("Status: ".concat(jsonObj.get("status").toString()));
 
         JSONObject data = (JSONObject) jsonObj.get("data");
-        System.out.println(data.get(date));
+        if (data.get(date) == null) {
+            System.out.println("Brak infomacji o danych z tego dnia");
+            throw new ExceptionInInitializerError();
+        }
 
     }
 }
