@@ -10,15 +10,15 @@ public class DayOfCovid {
     private final static String baseUrl = "https://api.quarantine.country/api/v1/spots/";
 
     // To fetch
-    public int total_cases;
-    public int deaths;
-    public int recovered;
-    public int tested;
+    private int total_cases;
+    private int deaths;
+    private int recovered;
+    private int tested;
 
     // To count
-    public double death_ratio;      // wspolczynnik zgonow
-    public double recovery_ratio;   // wspolczynnik wyzdrowien
-    public double tests_ratio;      // wspolczynnik pozytywnych testow
+    private double death_ratio;      // wspolczynnik zgonow
+    private double recovery_ratio;   // wspolczynnik wyzdrowien
+    private double tests_ratio;      // wspolczynnik testow na ilosc przypadkow
 
 
     public DayOfCovid(String restOfUrl, String date) throws IOException, ParseException, ExceptionInInitializerError {
@@ -46,5 +46,53 @@ public class DayOfCovid {
         death_ratio = (double) deaths / total_cases;
         recovery_ratio = (double) recovered / total_cases;
         tests_ratio = (double) tested / total_cases;
+    }
+
+    public void setTotal_cases(int total_cases) {
+        this.total_cases = total_cases;
+        countRatio();
+    }
+
+    public void setDeaths(int deaths) {
+        this.deaths = deaths;
+        countRatio();
+    }
+
+    public void setRecovered(int recovered) {
+        this.recovered = recovered;
+        countRatio();
+    }
+
+    public void setTested(int tested) {
+        this.tested = tested;
+        countRatio();
+    }
+
+    public int getTotal_cases() {
+        return total_cases;
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
+    public int getRecovered() {
+        return recovered;
+    }
+
+    public int getTested() {
+        return tested;
+    }
+
+    public double getDeath_ratio() {
+        return death_ratio;
+    }
+
+    public double getRecovery_ratio() {
+        return recovery_ratio;
+    }
+
+    public double getTests_ratio() {
+        return tests_ratio;
     }
 }
