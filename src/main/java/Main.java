@@ -21,52 +21,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static String getJsonInStr(String APIurl) throws IOException {
-        String inline = "";
-
-        try {
-            URL url = new URL(APIurl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
-
-            int responseCode = connection.getResponseCode();
-            if (responseCode != 200){
-                throw new RuntimeException("HttpResponseCode: " + responseCode);
-            }
-            else {
-                Scanner scanner = new Scanner(url.openStream());
-                while(scanner.hasNext()) {
-                    inline = inline.concat(scanner.nextLine());
-                }
-            }
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        return inline;
-    }
-
     public static void main(String[] args) throws IOException, ParseException {
-        String jsonInStr = getJsonInStr("https://api.quarantine.country/api/v1/spots/month/?region=russia");
-        // System.out.println(jsonInStr);
-
-
-        JSONParser parser = new JSONParser();
-        JSONObject data_obj = (JSONObject) parser.parse(jsonInStr);
-        System.out.println(data_obj.get("status"));
-
-        JSONObject tmp = (JSONObject) data_obj.get("data");
-        System.out.println(tmp.get("2021-04-27"));
-
-
-//        JSONArray tablica = (JSONArray) data_obj.get("data");
-//        for (int i = 0; i < tablica.size(); i++){
-//            JSONObject new_obj = (JSONObject) tablica.get(i);
-//            System.out.println(new_obj.get("total_cases"));
-//            System.out.println(new_obj.get("deaths"));
-//            System.out.println(new_obj.get("recovered"));
-//        }
+        new DayOfCovid("month/?region=russia", "2021-04-26");
     }
 }
