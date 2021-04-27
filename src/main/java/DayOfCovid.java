@@ -16,9 +16,9 @@ public class DayOfCovid {
     public int tested;
 
     // To count
-    public double death_ratio;          // wspolczynnik zgonow
-    public double recovery_ratio;       // wspolczynnik wyzdrowien
-    public double positive_test_ratio;  // wspolczynnik pozytywnych testow
+    public double death_ratio;      // wspolczynnik zgonow
+    public double recovery_ratio;   // wspolczynnik wyzdrowien
+    public double tests_ratio;      // wspolczynnik pozytywnych testow
 
 
     public DayOfCovid(String restOfUrl, String date) throws IOException, ParseException, ExceptionInInitializerError {
@@ -33,5 +33,18 @@ public class DayOfCovid {
             throw new ExceptionInInitializerError();
         }
 
+        JSONObject day = (JSONObject) data.get(date);
+        this.total_cases = Integer.parseInt(day.get("total_cases").toString());
+        this.deaths = Integer.parseInt(day.get("deaths").toString());
+        this.recovered = Integer.parseInt(day.get("recovered").toString());
+        this.tested = Integer.parseInt(day.get("tested").toString());
+
+        countRatio();
+    }
+
+    public void countRatio() {
+        death_ratio = (double) deaths / total_cases;
+        recovery_ratio = (double) recovered / total_cases;
+        tests_ratio = (double) tested / total_cases;
     }
 }

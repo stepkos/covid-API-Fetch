@@ -14,8 +14,10 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException, ParseException {
+
         try {
-            new DayOfCovid("month/?region=russia", "2021-04-25");
+            DayOfCovid cov = new DayOfCovid("month/?region=russia", "2021-04-26");
+            System.out.println(cov.recovery_ratio);
         }
         catch (ExceptionInInitializerError e) {
             System.out.println("Brak infomacji");
