@@ -12,4 +12,4 @@ Aplikacja napisana na potrzeby nauki pracy z API oraz formatem JSON
 - Obsługa błędów
 
 ## Licencja
-Wszystkie prawa zastrzeżone
+Wszelkie prawa zastrzeżone
