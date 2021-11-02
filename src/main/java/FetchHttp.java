@@ -5,11 +5,11 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class FetchHttp {
-    public static String getJsonAsStr(String APIurl) throws IOException {
+    public static String getJsonAsStr(String APIUrl) throws IOException {
         String inline = "";
 
         try {
-            URL url = new URL(APIurl);
+            URL url = new URL(APIUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
