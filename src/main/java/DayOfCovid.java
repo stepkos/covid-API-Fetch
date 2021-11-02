@@ -11,10 +11,10 @@ public class DayOfCovid {
     private final static String baseUrl = "https://api.quarantine.country/api/v1/spots/";
 
     // To fetch
-    private int total_cases;
-    private int deaths;
-    private int recovered;
-    private int tested;
+    private long total_cases;
+    private long deaths;
+    private long recovered;
+    private long tested;
 
     // To count
     private double death_ratio;      // wspolczynnik zgonow
@@ -35,10 +35,10 @@ public class DayOfCovid {
         }
 
         JSONObject day = (JSONObject) data.get(date);
-        this.total_cases = Integer.parseInt(day.get("total_cases").toString());
-        this.deaths = Integer.parseInt(day.get("deaths").toString());
-        this.recovered = Integer.parseInt(day.get("recovered").toString());
-        this.tested = Integer.parseInt(day.get("tested").toString());
+        this.total_cases = Long.parseLong(day.get("total_cases").toString());
+        this.deaths = Long.parseLong(day.get("deaths").toString());
+        this.recovered = Long.parseLong(day.get("recovered").toString());
+        this.tested = Long.parseLong(day.get("tested").toString());
 
         countRatio();
     }
@@ -87,39 +87,39 @@ public class DayOfCovid {
                 '}';
     }
 
-    public void setTotal_cases(int total_cases) {
+    public void setTotal_cases(long total_cases) {
         this.total_cases = total_cases;
         countRatio();
     }
 
-    public void setDeaths(int deaths) {
+    public void setDeaths(long deaths) {
         this.deaths = deaths;
         countRatio();
     }
 
-    public void setRecovered(int recovered) {
+    public void setRecovered(long recovered) {
         this.recovered = recovered;
         countRatio();
     }
 
-    public void setTested(int tested) {
+    public void setTested(long tested) {
         this.tested = tested;
         countRatio();
     }
 
-    public int getTotal_cases() {
+    public long getTotal_cases() {
         return total_cases;
     }
 
-    public int getDeaths() {
+    public long getDeaths() {
         return deaths;
     }
 
-    public int getRecovered() {
+    public long getRecovered() {
         return recovered;
     }
 
-    public int getTested() {
+    public long getTested() {
         return tested;
     }
 
